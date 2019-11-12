@@ -47,9 +47,10 @@ function create() {
   logo = this.add.image(100, 100, "logo");
   sound = this.sound.add("fart");
 
-  this.input.on('pointerdown', function(pointer){
-    sound.play();
+  this.input.on('pointerdown', (pointer) => {
+    logo.setPosition(pointer.x, pointer.y);
     sound.resume;
+    sound.play();
   });
 
   this.tweens.add({
@@ -64,5 +65,7 @@ function create() {
 
 
 function update() {
-
+  this.input.on('pointerdown', function() {
+    console.log("test");
+  });
 }
