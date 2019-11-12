@@ -41,10 +41,7 @@ function preload() {
   this.input.enabled = true;
   this.load.audio("fart", fartSound);
   this.load.image("logo", logoImg);
-
-
 }
-
 
 function create() {
   logo = this.add.image(100, 100, "logo");
@@ -52,6 +49,7 @@ function create() {
 
   this.input.on('pointerdown', function(pointer){
     sound.play();
+    sound.resume;
   });
 
   this.tweens.add({
