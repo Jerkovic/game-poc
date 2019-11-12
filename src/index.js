@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import logoImg from "./assets/logo.png";
+import fartSound from "./assets/sound/Fart.ogg";
 
 const config = {
   type: Phaser.AUTO,
@@ -11,7 +12,8 @@ const config = {
   },
   scene: {
     preload: preload,
-    create: create
+    create: create,
+    update: update
   }
 };
 
@@ -19,10 +21,21 @@ const game = new Phaser.Game(config);
 
 function preload() {
   this.load.image("logo", logoImg);
+  this.load.audio("fart", fartSound);
 }
 
+var sound;
+
+function click() {
+    console.log("test");
+}
 function create() {
-  const logo = this.add.image(40, 100, "logo");
+  var logo = this.add.image(100, 100, "logo");
+  logo.setInteractive();
+  this.input.on('logo',click);
+
+  sound = this.sound.add("fart");
+  sound.play();
 
   this.tweens.add({
     targets: logo,
@@ -32,4 +45,8 @@ function create() {
     yoyo: true,
     loop: -1
   });
+}
+
+function update() {
+
 }
