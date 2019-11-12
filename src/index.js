@@ -1,6 +1,6 @@
 import Phaser from "phaser";
 import logoImg from "./assets/logo.png";
-import fartSound from "./assets/sound/Fart.ogg";
+import fartSound from "./assets/sound/Fart.mp3";
 
 const config = {
   type: Phaser.AUTO,
