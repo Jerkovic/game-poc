@@ -43,8 +43,12 @@ function preload() {
   this.load.image("logo", logoImg);
 }
 
+
 function create() {
-  logo = this.add.image(100, 100, "logo");
+  logo = this.add.image(250, 300, "logo");
+  logo.width = 100;
+  logo.height = 100;
+
   sound = this.sound.add("fart");
 
   this.input.on('touchstart', (pointer) => {
@@ -52,17 +56,18 @@ function create() {
     sound.play();
   });
 
-  this.tweens.add({
+  var tween1 = this.tweens.add({
     targets: logo,
-    y: 450,
-    duration: 2000,
-    ease: "Power2",
-    yoyo: true,
-    loop: -1
+    scaleX: 0.01,
+    ease: 'Linear',
+    duration: 300,
+    repeat: 5,
+    yoyo: true
   });
+
+
+
 }
-
-
 function update() {
   this.input.on('pointerdown', function() {
       sound.resume;
