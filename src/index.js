@@ -47,8 +47,7 @@ function create() {
   logo = this.add.image(100, 100, "logo");
   sound = this.sound.add("fart");
 
-  this.input.on('pointerdown', (pointer) => {
-    logo.setPosition(pointer.x, pointer.y);
+  this.input.on('touchstart', (pointer) => {
     sound.resume;
     sound.play();
   });
@@ -66,6 +65,7 @@ function create() {
 
 function update() {
   this.input.on('pointerdown', function() {
-    console.log("test");
+      sound.resume;
+      sound.play();
   });
 }
