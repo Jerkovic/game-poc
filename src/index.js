@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import logoImg from "./assets/logo.png";
+import logoImg from "./assets/cards/barnkonventionen64.jpg";
 import fartSound from "./assets/sound/Fart.mp3";
 
 const config = {
