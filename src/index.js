@@ -7,6 +7,23 @@ const config = {
   parent: "phaser-example",
   width: 375,
   height: 667,
+  input: {
+    keyboard: {
+      target: window
+    },
+    mouse: {
+      target: null,
+      capture: true
+    },
+    activePointers: 1,
+    touch: {
+      target: null,
+      capture: true
+    },
+    smoothFactor: 0,
+    gamepad: false,
+    windowEvents: true,
+  },
   stage: {
     backgroundColor: "#000",
   },
@@ -16,26 +33,26 @@ const config = {
     update: update
   }
 };
-
+var sound;
+var logo;
 const game = new Phaser.Game(config);
 
 function preload() {
-  this.load.image("logo", logoImg);
+  this.input.enabled = true;
   this.load.audio("fart", fartSound);
+  this.load.image("logo", logoImg);
+
+
 }
 
-var sound;
 
-function click() {
-    console.log("test");
-}
 function create() {
-  var logo = this.add.image(100, 100, "logo");
-  logo.setInteractive();
-  this.input.on('logo',click);
-
+  logo = this.add.image(100, 100, "logo");
   sound = this.sound.add("fart");
-  sound.play();
+
+  this.input.on('pointerdown', function(pointer){
+    sound.play();
+  });
 
   this.tweens.add({
     targets: logo,
@@ -46,6 +63,7 @@ function create() {
     loop: -1
   });
 }
+
 
 function update() {
 
